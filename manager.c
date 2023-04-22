@@ -1,5 +1,5 @@
 #include "manager.h"
-
+#include <stdlib.h>
 int selectMenu(){
     int menu;
     printf("\n*** 제품 관리 ***\n");
@@ -39,7 +39,13 @@ void saveData(Product p[], int count){
 	FILE* fp;
 
 	//중량 가격 제품명
+	
 	fp= fopen("product.txt","wt");
+	
+	for(int i=0; i<count; i++){
+		fprintf(fp, "%s %d %d\n", p[i].name, p[i].weight, p[i].price);	
+	}
+	
 	
 	
 	fclose(fp);
